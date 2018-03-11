@@ -6,6 +6,11 @@ export default ({
 }) => (
   <Fragment>
     <h1>{post.frontmatter.title}</h1>
+    <article
+      dangerouslySetInnerHTML={{
+        __html: post.html
+      }}
+    />
   </Fragment>
 )
 

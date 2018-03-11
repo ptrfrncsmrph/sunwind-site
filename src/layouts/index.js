@@ -65,12 +65,13 @@ const TemplateWrapper = ({ children }) => (
           ]}
         />
         <Header theme={theme}>
-          {console.log(theme)}
-          <img
-            src={logo}
-            alt="SunWind LLC Logo"
-            width="200"
-          />
+          <Link to="/">
+            <img
+              src={logo}
+              alt="SunWind LLC Logo"
+              width="200"
+            />
+          </Link>
         </Header>
         <div
           style={{
