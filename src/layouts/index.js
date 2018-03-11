@@ -3,12 +3,13 @@ import PropTypes from "prop-types"
 import Link from "gatsby-link"
 import Helmet from "react-helmet"
 
+import logo from "../assets/Logo.svg"
 import "./index.css"
 
 const Header = () => (
   <div
     style={{
-      background: "tomato",
+      background: "#2c3e50",
       marginBottom: "1.45rem"
     }}
   >
@@ -27,7 +28,11 @@ const Header = () => (
             textDecoration: "none"
           }}
         >
-          Gatsby
+          <img
+            src={logo}
+            alt="SunWind LLC Logo"
+            width="200"
+          />
         </Link>
       </h1>
     </div>
@@ -37,15 +42,17 @@ const Header = () => (
 const TemplateWrapper = ({ children }) => (
   <div>
     <Helmet
-      title="Gatsby Default Starter"
+      title="SunWind LLC | Cape Cod's Solar Professionals"
       meta={[
         {
           name: "description",
-          content: "Sample"
+          content:
+            "SunWind LLC has been trusted by homeowners on Cape Cod and beyond since 2009."
         },
         {
           name: "keywords",
-          content: "sample, something"
+          content:
+            "solar, Cape Cod, solar installers, Massachusetts, SREC, renewable energy, solar panels, solar loan, smart program"
         }
       ]}
     />
