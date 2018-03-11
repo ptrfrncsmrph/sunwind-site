@@ -10,8 +10,12 @@ export default ({
     <p>Now go build something great.</p>
     {edges.map(
       ({
-        node: { frontmatter: { title, path } }
-      }) => <a href={path}>{title}</a>
+        node: { id, frontmatter: { title, path } }
+      }) => (
+        <a key={id} href={path}>
+          {title}
+        </a>
+      )
     )}
   </div>
 )
@@ -21,6 +25,7 @@ export const pageQuery = graphql`
     allMarkdownRemark(limit: 20) {
       edges {
         node {
+          id
           frontmatter {
             title
             path
