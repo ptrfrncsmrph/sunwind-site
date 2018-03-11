@@ -2,5 +2,8 @@ module.exports = {
   siteMetadata: {
     title: `SunWind LLC`
   },
-  plugins: [`gatsby-plugin-react-helmet`]
+  plugins: [
+    `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-styled-components`
+  ]
 }

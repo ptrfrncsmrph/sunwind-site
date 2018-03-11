@@ -1,73 +1,89 @@
-import React from "react"
+import React, {
+  Fragment,
+  createContext
+} from "react"
 import PropTypes from "prop-types"
 import Link from "gatsby-link"
 import Helmet from "react-helmet"
+import styled, {
+  ThemeProvider,
+  withTheme
+} from "styled-components"
 
-import logo from "../assets/Logo.svg"
+import logo from "../assets/logo.svg"
 import "./index.css"
 
-const Header = () => (
-  <div
-    style={{
-      background: "#2c3e50",
-      marginBottom: "1.45rem"
-    }}
-  >
-    <div
-      style={{
-        margin: "0 auto",
-        maxWidth: 960,
-        padding: "1.45rem 1.0875rem"
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: "white",
-            textDecoration: "none"
-          }}
-        >
+const theme = {
+  midnightBlue: "#2c3e50",
+  wetAsphalt: "#34495e",
+  wisteria: "#8e44ad",
+  amethyst: "#9b59b6",
+  belizeHole: "#2980b9",
+  peterRiver: "#3498db",
+  nephritis: "#27ae60",
+  emerald: "#2ecc71",
+  greenSea: "#16a085",
+  turquoise: "#1abc9c",
+  asbestos: "#95a5a6",
+  concrete: "#7f8c8d",
+  silver: "#bdc3c7",
+  clouds: "#ecf0f1",
+  pomegranate: "#c0392b",
+  alizarin: "#e74c3c",
+  pumpkin: "#d35400",
+  carrot: "#e67e22",
+  orange: "#f39c12",
+  sunflower: "#f1c40f"
+}
+
+const Header = styled.header`
+  margin-bottom: 1.5rem;
+  max-width: 960px;
+  padding: 1.45rem 0px 0px 1.0875rem;
+  background-color: ${({ theme }) =>
+    theme.wetAsphalt};
+`
+
+const TemplateWrapper = ({ children }) => (
+  <Fragment>
+    <ThemeProvider theme={theme}>
+      <Fragment>
+        <Helmet
+          title="SunWind LLC | Cape Cod's Solar Professionals"
+          meta={[
+            {
+              name: "description",
+              content:
+                "SunWind LLC has been trusted by homeowners on Cape Cod and beyond since 2009."
+            },
+            {
+              name: "keywords",
+              content:
+                "solar, Cape Cod, solar installers, Massachusetts, SREC, renewable energy, solar panels, solar loan, smart program"
+            }
+          ]}
+        />
+        <Header theme={theme}>
+          {console.log(theme)}
           <img
             src={logo}
             alt="SunWind LLC Logo"
             width="200"
           />
-        </Link>
-      </h1>
-    </div>
-  </div>
-)
-
-const TemplateWrapper = ({ children }) => (
-  <div>
-    <Helmet
-      title="SunWind LLC | Cape Cod's Solar Professionals"
-      meta={[
-        {
-          name: "description",
-          content:
-            "SunWind LLC has been trusted by homeowners on Cape Cod and beyond since 2009."
-        },
-        {
-          name: "keywords",
-          content:
-            "solar, Cape Cod, solar installers, Massachusetts, SREC, renewable energy, solar panels, solar loan, smart program"
-        }
-      ]}
-    />
-    <Header />
-    <div
-      style={{
-        margin: "0 auto",
-        maxWidth: 960,
-        padding: "0px 1.0875rem 1.45rem",
-        paddingTop: 0
-      }}
-    >
-      {children()}
-    </div>
-  </div>
+        </Header>
+        <div
+          style={{
+            margin: "0 auto",
+            maxWidth: 960,
+            padding: "0px 1.0875rem 1.45rem",
+            paddingTop: 0
+          }}
+        >
+          {children()}
+        </div>
+      </Fragment>
+    </ThemeProvider>
+  </Fragment>
 )
 
 TemplateWrapper.propTypes = {
