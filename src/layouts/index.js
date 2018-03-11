@@ -40,8 +40,9 @@ const Header = styled.header`
   margin-bottom: 1.5rem;
   max-width: 960px;
   padding: 1.45rem 0px 0px 1.0875rem;
-  background-color: ${({ theme }) =>
-    theme.wetAsphalt};
+  background: url("http://res.cloudinary.com/doyj6rjkr/image/upload/c_crop,h_173,q_100,w_1000,x_0,y_342/v1520730257/6C5A00721000.jpg")
+    ${"" /* background-color: ${({ theme }) =>
+    theme.wetAsphalt}; */};
 `
 
 const TemplateWrapper = ({ children }) => (
