@@ -1,8 +1,8 @@
 ---
 path: "/second-post"
-title: "S Blog Post"
-published: false
+title: "Second Blog Post"
+published: true
 ---
 
-# Hel444lo!
-dfa fg
+# Hello, again!
+This is another post

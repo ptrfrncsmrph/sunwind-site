@@ -5,7 +5,7 @@ export default ({
   data: { allMarkdownRemark: { edges } }
 }) => (
   <div>
-    <h1>Yo cucksuckkkkerrrrrrrrssss</h1>
+    <h1>Hello</h1>
     <p>Welcome to your new Gatsby site.</p>
     <p>Now go build something great.</p>
     <ul>

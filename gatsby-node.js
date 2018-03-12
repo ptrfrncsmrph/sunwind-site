@@ -1,12 +1,12 @@
 const path = require("path")
-const postTemplate = path.resolve(
-  "src/templates/post.js"
-)
 
 exports.createPages = ({
   boundActionCreators,
   graphql
 }) => {
+  const postTemplate = path.resolve(
+    "src/templates/post.js"
+  )
   const { createPage } = boundActionCreators
   return graphql(`
     {
@@ -30,11 +30,12 @@ exports.createPages = ({
     }
     console.log(res.data.allMarkdownRemark.edges)
     res.data.allMarkdownRemark.edges.forEach(
-      ({ node }) =>
+      ({ node }) => {
         createPage({
           path: node.frontmatter.path,
           component: postTemplate
         })
+      }
     )
   })
 }

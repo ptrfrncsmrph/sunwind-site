@@ -1,5 +1,6 @@
 import React, {
   Fragment,
+  Component,
   createContext
 } from "react"
 import PropTypes from "prop-types"
@@ -40,10 +41,36 @@ const Header = styled.header`
   margin-bottom: 1.5rem;
   max-width: 960px;
   padding: 1.45rem 0px 0px 1.0875rem;
-  background: url("http://res.cloudinary.com/doyj6rjkr/image/upload/c_crop,h_173,q_100,w_1000,x_0,y_342/v1520730257/6C5A00721000.jpg")
-    ${"" /* background-color: ${({ theme }) =>
-    theme.wetAsphalt}; */};
+  background: url("http://res.cloudinary.com/doyj6rjkr/image/upload/c_crop,h_173,q_100,w_1000,x_0,y_342/v1520730257/6C5A00721000.jpg");
 `
+
+const Context = createContext()
+const { Provider, Consumer } = Context
+
+class App extends Component {
+  state = {
+    user: {}
+  }
+  updateUser = (key, value) =>
+    this.setState(({ user }) => ({
+      user: {
+        ...user,
+        [key]: value
+      }
+    }))
+  render() {
+    const { user } = this.state
+    const {
+      children,
+      render = children
+    } = this.props
+    return (
+      <Provider value={user}>
+        {render({ updateUser: this.updateUser })}
+      </Provider>
+    )
+  }
+}
 
 const TemplateWrapper = ({ children }) => (
   <Fragment>

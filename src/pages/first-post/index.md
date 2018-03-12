@@ -1,8 +1,8 @@
 ---
 path: "/first-post"
-title: "First Blog Post"
+title: "first Blog Post"
 published: true
 ---
 
 # Hello!
-you ara poo
+This is a post
