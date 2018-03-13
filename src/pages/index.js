@@ -28,7 +28,7 @@ export default ({
     </ul>
     <ConnectedUserForm
       onSubmit={e => e.preventDefault()}
-      netlify
+      data-netlify="true"
     >
       {props => (
         <Fragment>
