@@ -1,6 +1,6 @@
 import React, { Fragment } from "react"
 import Link from "gatsby-link"
-import { ConnectedUserForm } from "../layouts"
+import { ConnectedUserForm } from "../state/createStore"
 
 export default ({
   data: { allMarkdownRemark: { edges } }
@@ -29,13 +29,16 @@ export default ({
     <ConnectedUserForm>
       {props => (
         <Fragment>
-          <input
-            value={props.user}
-            type="text"
-            onChange={({ target: { value } }) =>
-              props.updateUser("user", value)
-            }
-          />
+          {["user", "zip", "town"].map(key => (
+            <input
+              key={key}
+              value={props[key]}
+              type="text"
+              onChange={({ target: { value } }) =>
+                props.updateUser(key)(value)
+              }
+            />
+          ))}
           <div>
             {JSON.stringify(props, null, 2)}
           </div>

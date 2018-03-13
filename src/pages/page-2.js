@@ -1,6 +1,6 @@
 import React from "react"
 import Link from "gatsby-link"
-import { ConnectedUserForm } from "../layouts"
+import { ConnectedUserForm } from "../state/createStore"
 
 const SecondPage = () => {
   return (
