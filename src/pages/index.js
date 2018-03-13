@@ -2,6 +2,17 @@ import React, { Fragment } from "react"
 import Link from "gatsby-link"
 import { ConnectedUserContainer } from "../state/createStore"
 
+const encode = data => {
+  return Object.keys(data)
+    .map(
+      key =>
+        encodeURIComponent(key) +
+        "=" +
+        encodeURIComponent(data[key])
+    )
+    .join("&")
+}
+
 export default ({
   data: { allMarkdownRemark: { edges } }
 }) => (
@@ -47,8 +58,6 @@ export default ({
             e.preventDefault()
           }}
           data-netlify="true"
-          name="contact"
-          method="POST"
         >
           {["user", "zip", "town"].map(key => (
             <input
