@@ -29,7 +29,7 @@ export default ({
     <ConnectedUserContainer>
       {props => (
         <form
-          onSubmit={e => e.preventDefault()}
+          action="/success"
           data-netlify="true"
           name="contact"
           method="POST"
