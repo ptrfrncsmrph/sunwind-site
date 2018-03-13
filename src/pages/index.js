@@ -26,7 +26,10 @@ export default ({
         )
       )}
     </ul>
-    <ConnectedUserForm>
+    <ConnectedUserForm
+      onSubmit={e => e.preventDefault()}
+      netlify
+    >
       {props => (
         <Fragment>
           {["user", "zip", "town"].map(key => (
@@ -39,6 +42,7 @@ export default ({
               }
             />
           ))}
+          <button type="submit">Button</button>
           <div>
             {JSON.stringify(props, null, 2)}
           </div>
