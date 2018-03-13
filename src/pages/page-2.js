@@ -1,6 +1,6 @@
 import React from "react"
 import Link from "gatsby-link"
-import { ConnectedUserForm } from "../state/createStore"
+import { ConnectedUserContainer } from "../state/createStore"
 
 const SecondPage = () => {
   return (
@@ -9,9 +9,9 @@ const SecondPage = () => {
       <p>Welcome to page 2</p>
       <Link to="/">Go back to the homepage</Link>
       <input type="text" />
-      <ConnectedUserForm>
+      <ConnectedUserContainer>
         {props => JSON.stringify(props, null, 2)}
-      </ConnectedUserForm>
+      </ConnectedUserContainer>
     </div>
   )
 }
