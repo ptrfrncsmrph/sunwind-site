@@ -1,8 +1,4 @@
-import React, {
-  Fragment,
-  Component,
-  createContext
-} from "react"
+import React, { Fragment, Component } from "react"
 import PropTypes from "prop-types"
 import Link from "gatsby-link"
 import Helmet from "react-helmet"
@@ -10,6 +6,28 @@ import styled, {
   ThemeProvider,
   withTheme
 } from "styled-components"
+import { connect } from "react-redux"
+
+const UserForm = ({
+  children,
+  render = children,
+  ...props
+}) => render(props)
+
+const mapStateToProps = props => props
+
+const mapDispatchToProps = dispatch => ({
+  updateUser: (key, value) =>
+    dispatch({
+      type: `UPDATE_USER`,
+      value: { [key]: value }
+    })
+})
+
+export const ConnectedUserForm = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(UserForm)
 
 import logo from "../assets/logo.svg"
 import "./index.css"
@@ -43,34 +61,6 @@ const Header = styled.header`
   padding: 1.45rem 0px 0px 1.0875rem;
   background: url("http://res.cloudinary.com/doyj6rjkr/image/upload/c_crop,h_173,q_100,w_1000,x_0,y_342/v1520730257/6C5A00721000.jpg");
 `
-
-const Context = createContext()
-const { Provider, Consumer } = Context
-
-class App extends Component {
-  state = {
-    user: {}
-  }
-  updateUser = (key, value) =>
-    this.setState(({ user }) => ({
-      user: {
-        ...user,
-        [key]: value
-      }
-    }))
-  render() {
-    const { user } = this.state
-    const {
-      children,
-      render = children
-    } = this.props
-    return (
-      <Provider value={user}>
-        {render({ updateUser: this.updateUser })}
-      </Provider>
-    )
-  }
-}
 
 const TemplateWrapper = ({ children }) => (
   <Fragment>

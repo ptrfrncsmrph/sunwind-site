@@ -1,5 +1,6 @@
-import React from "react"
+import React, { Fragment } from "react"
 import Link from "gatsby-link"
+import { ConnectedUserForm } from "../layouts"
 
 export default ({
   data: { allMarkdownRemark: { edges } }
@@ -8,6 +9,7 @@ export default ({
     <h1>Hello</h1>
     <p>Welcome to your new Gatsby site.</p>
     <p>Now go build something great.</p>
+    <Link to="/page-2">Page 2</Link>
     <ul>
       {edges.map(
         ({
@@ -24,6 +26,22 @@ export default ({
         )
       )}
     </ul>
+    <ConnectedUserForm>
+      {props => (
+        <Fragment>
+          <input
+            value={props.user}
+            type="text"
+            onChange={({ target: { value } }) =>
+              props.updateUser("user", value)
+            }
+          />
+          <div>
+            {JSON.stringify(props, null, 2)}
+          </div>
+        </Fragment>
+      )}
+    </ConnectedUserForm>
   </div>
 )
 
