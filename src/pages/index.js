@@ -29,7 +29,23 @@ export default ({
     <ConnectedUserContainer>
       {props => (
         <form
-          action="/success"
+          onSubmit={e => {
+            fetch("/", {
+              method: "POST",
+              headers: {
+                "Content-Type":
+                  "application/x-www-form-urlencoded"
+              },
+              body: encode({
+                "form-name": "contact",
+                ...props
+              })
+            })
+              .then(() => alert("Success!"))
+              .catch(error => alert(error))
+
+            e.preventDefault()
+          }}
           data-netlify="true"
           name="contact"
           method="POST"
