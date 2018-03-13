@@ -1,6 +1,6 @@
 import React, { Fragment } from "react"
 import Link from "gatsby-link"
-import { ConnectedUserForm } from "../state/createStore"
+import { ConnectedUserContainer } from "../state/createStore"
 
 export default ({
   data: { allMarkdownRemark: { edges } }
@@ -26,14 +26,14 @@ export default ({
         )
       )}
     </ul>
-    <ConnectedUserForm
-      onSubmit={e => e.preventDefault()}
-      data-netlify="true"
-      name="contact"
-      method="POST"
-    >
+    <ConnectedUserContainer>
       {props => (
-        <Fragment>
+        <form
+          onSubmit={e => e.preventDefault()}
+          data-netlify="true"
+          name="contact"
+          method="POST"
+        >
           {["user", "zip", "town"].map(key => (
             <input
               key={key}
@@ -48,9 +48,9 @@ export default ({
           <div>
             {JSON.stringify(props, null, 2)}
           </div>
-        </Fragment>
+        </form>
       )}
-    </ConnectedUserForm>
+    </ConnectedUserContainer>
   </div>
 )
 

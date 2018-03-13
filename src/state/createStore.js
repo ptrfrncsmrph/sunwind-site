@@ -1,7 +1,7 @@
 import { createStore } from "redux"
 import { connect } from "react-redux"
 
-const UserForm = ({
+const UserContainer = ({
   children,
   render = children,
   ...props
@@ -17,10 +17,10 @@ const mapDispatchToProps = dispatch => ({
     })
 })
 
-export const ConnectedUserForm = connect(
+export const ConnectedUserContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(UserForm)
+)(UserContainer)
 
 const reducer = (state, { value, type }) =>
   type === `UPDATE_USER`
