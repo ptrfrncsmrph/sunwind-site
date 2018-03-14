@@ -41,6 +41,7 @@ export default ({
       {props => (
         <form
           onSubmit={e => {
+            console.log(props)
             fetch("/", {
               method: "POST",
               headers: {
@@ -76,16 +77,6 @@ export default ({
         </form>
       )}
     </ConnectedUserContainer>
-    <form
-      name="contact"
-      netlify
-      netlify-honeypot="bot-field"
-      hidden
-    >
-      <input type="text" name="user" />
-      <input type="text" name="zip" />
-      <input type="text" name="town" />
-    </form>
   </div>
 )
 
