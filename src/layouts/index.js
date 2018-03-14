@@ -70,8 +70,9 @@ const TemplateWrapper = ({ children }) => (
         </Header>
         <form
           name="contact"
-          netlify
+          data-netlify="true"
           netlify-honeypot="bot-field"
+          method="post"
           hidden
         >
           <input type="text" name="user" />
