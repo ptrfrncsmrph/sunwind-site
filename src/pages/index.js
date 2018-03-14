@@ -57,11 +57,11 @@ export default ({
 
             e.preventDefault()
           }}
-          data-netlify="true"
         >
           {["user", "zip", "town"].map(key => (
             <input
               key={key}
+              name={key}
               value={props[key]}
               type="text"
               onChange={({ target: { value } }) =>
@@ -82,7 +82,7 @@ export default ({
       netlify-honeypot="bot-field"
       hidden
     >
-      <input type="text" name="name" />
+      <input type="text" name="user" />
       <input type="text" name="zip" />
       <input type="text" name="town" />
     </form>
